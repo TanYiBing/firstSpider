@@ -1,6 +1,4 @@
 const Crawler = require('crawler');
-const jsdom = require('jsdom');
-const fs = require('fs');
 
 // let current_book = {};
 
@@ -62,14 +60,13 @@ function one (chapter){
     const c = new Crawler({
         jQuery: true,
         forceUTF8: true,
-        incomingEncoding: 'GBK',
         // The global callback won't be called
         callback: function (error, res, done) {
             if(error) {
                 console.log(error);
             }else{
                 let $ = res.$;
-                let content = $('#content').html();
+                let content = $('#content').text();
                 console.log(content)
             }
             done();
